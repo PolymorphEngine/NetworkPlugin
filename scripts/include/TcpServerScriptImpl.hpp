@@ -16,7 +16,7 @@ namespace polymorph::engine::network {
         ////////////////////// CONSTRUCTORS/DESTRUCTORS /////////////////////////
 
     public:
-        explicit TcpServerScriptImpl(std::shared_ptr<myxmlpp::Node> node, GameObject gameObject)
+        explicit TcpServerScriptImpl(GameObject gameObject, std::shared_ptr<myxmlpp::Node> node)
             : TcpServerScript(node, gameObject) {};
 
         ~TcpServerScriptImpl() override = default;
@@ -60,6 +60,10 @@ namespace polymorph::engine::network {
         polymorph::network::AuthorizationKey generateUdpAuthorizationKey(polymorph::network::SessionId sessionId) override;
 
         void unregisterReceiveHandlers(polymorph::network::OpId opId) override;
+
+        void build() override;
+
+        void saveAll() override;
 
     private:
 

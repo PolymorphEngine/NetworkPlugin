@@ -16,7 +16,7 @@ namespace polymorph::engine::network {
         ////////////////////// CONSTRUCTORS/DESTRUCTORS /////////////////////////
 
     public:
-        explicit UdpServerScriptImpl(std::shared_ptr<myxmlpp::Node> node, GameObject gameObject)
+        explicit UdpServerScriptImpl(GameObject gameObject, std::shared_ptr<myxmlpp::Node> node)
             : UdpServerScript(node, gameObject) {};
 
         ~UdpServerScriptImpl() override = default;
@@ -62,6 +62,9 @@ namespace polymorph::engine::network {
 
         void unregisterReceiveHandlers(polymorph::network::OpId opId) override;
 
+        void build() override;
+
+        void saveAll() override;
 
     private:
 

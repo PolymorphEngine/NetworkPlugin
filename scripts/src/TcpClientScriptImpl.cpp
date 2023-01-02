@@ -7,7 +7,7 @@
 
 #include "TcpClientScriptImpl.hpp"
 
-polymorph::engine::network::TcpClientScriptImpl::TcpClientScriptImpl(std::shared_ptr<myxmlpp::Node> node, GameObject gameObject)
+polymorph::engine::network::TcpClientScriptImpl::TcpClientScriptImpl(GameObject gameObject, std::shared_ptr<myxmlpp::Node> node)
         : TcpClientScript(node, gameObject)
 {
 }
@@ -48,4 +48,16 @@ void polymorph::engine::network::TcpClientScriptImpl::_createClient()
 void polymorph::engine::network::TcpClientScriptImpl::unregisterReceiveHandlers(polymorph::network::OpId opId)
 {
     _client->unregisterReceiveHandlers(opId);
+}
+
+void polymorph::engine::network::TcpClientScriptImpl::build()
+{
+    _setProperty("host", host);
+    _setProperty("port", port);
+}
+
+void polymorph::engine::network::TcpClientScriptImpl::saveAll()
+{
+    saveProperty("host", host);
+    saveProperty("port", port);
 }

@@ -17,7 +17,7 @@ namespace polymorph::engine::network
         ////////////////////// CONSTRUCTORS/DESTRUCTORS /////////////////////////
 
     public:
-        explicit UdpClientScriptImpl(std::shared_ptr<myxmlpp::Node> node, GameObject gameObject);
+        explicit UdpClientScriptImpl(GameObject gameObject, std::shared_ptr<myxmlpp::Node> node);
 
         virtual ~UdpClientScriptImpl() = default;
 
@@ -42,6 +42,10 @@ namespace polymorph::engine::network
                                 std::function<void(bool, polymorph::network::SessionId session)> callback);
 
         void unregisterReceiveHandlers(polymorph::network::OpId opId) override;
+
+        void build() override;
+
+        void saveAll() override;
 
     private:
         void _createClient();

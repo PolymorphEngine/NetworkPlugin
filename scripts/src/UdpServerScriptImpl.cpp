@@ -67,3 +67,15 @@ void polymorph::engine::network::UdpServerScriptImpl::unregisterReceiveHandlers(
 {
     _server->unregisterReceiveHandlers(opId);
 }
+
+void polymorph::engine::network::UdpServerScriptImpl::build()
+{
+    _setProperty("port", port);
+    _setProperty("safetiesMapping", safetiesMapping);
+}
+
+void polymorph::engine::network::UdpServerScriptImpl::saveAll()
+{
+    saveProperty("port", port);
+    //saveProperty("safetiesMapping", safetiesMapping);
+}

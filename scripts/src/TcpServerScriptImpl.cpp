@@ -62,3 +62,13 @@ void polymorph::engine::network::TcpServerScriptImpl::unregisterReceiveHandlers(
 {
     _server->unregisterReceiveHandlers(opId);
 }
+
+void polymorph::engine::network::TcpServerScriptImpl::build()
+{
+    _setProperty("port", port);
+}
+
+void polymorph::engine::network::TcpServerScriptImpl::saveAll()
+{
+    saveProperty("port", port);
+}

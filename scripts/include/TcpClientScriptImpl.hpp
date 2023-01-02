@@ -18,7 +18,7 @@ namespace polymorph::engine::network
         ////////////////////// CONSTRUCTORS/DESTRUCTORS /////////////////////////
 
     public:
-        explicit TcpClientScriptImpl(std::shared_ptr<myxmlpp::Node> node, GameObject gameObject);
+        explicit TcpClientScriptImpl(GameObject gameObject, std::shared_ptr<myxmlpp::Node> node);
 
         ~TcpClientScriptImpl() override = default;
 
@@ -42,6 +42,10 @@ namespace polymorph::engine::network
                                 std::function<void(bool, polymorph::network::SessionId)> callback) override;
 
         void unregisterReceiveHandlers(polymorph::network::OpId opId) override;
+
+        void build() override;
+
+        void saveAll() override;
 
 
     private:

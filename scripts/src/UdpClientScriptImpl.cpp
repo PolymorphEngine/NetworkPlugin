@@ -7,7 +7,7 @@
 
 #include "UdpClientScriptImpl.hpp"
 
-polymorph::engine::network::UdpClientScriptImpl::UdpClientScriptImpl(std::shared_ptr<myxmlpp::Node> node, GameObject gameObject)
+polymorph::engine::network::UdpClientScriptImpl::UdpClientScriptImpl(GameObject gameObject, std::shared_ptr<myxmlpp::Node> node)
         : UdpClientScript(node, gameObject)
 {
 }
@@ -55,4 +55,18 @@ void polymorph::engine::network::UdpClientScriptImpl::_createClient()
 void polymorph::engine::network::UdpClientScriptImpl::unregisterReceiveHandlers(polymorph::network::OpId opId)
 {
     _client->unregisterReceiveHandlers(opId);
+}
+
+void polymorph::engine::network::UdpClientScriptImpl::build()
+{
+    _setProperty("host", host);
+    _setProperty("port", port);
+    _setProperty("safeties", safetiesMapping);
+}
+
+void polymorph::engine::network::UdpClientScriptImpl::saveAll()
+{
+    saveProperty("host", host);
+    saveProperty("port", port);
+    //saveProperty("safeties", safetiesMapping);
 }

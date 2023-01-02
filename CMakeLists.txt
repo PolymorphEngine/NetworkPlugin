@@ -32,7 +32,7 @@ file(GLOB_RECURSE EXPORTS includeExport/*.hpp)
 
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
-include(CMake/FindPolymorphNetworkLibrary.cmake)
+include(cmake/FindPolymorphNetworkLibrary.cmake)
 
 add_library(${PROJECT_NAME} SHARED ${SCRIPTS_SRC} ${SCRIPTS_ICL} ${FACTORY_SRC} ${FACTORY_ICL} ${CORE_SRC} ${CORE_ICL} ${EXPORTS})
 SET_TARGET_PROPERTIES(${PROJECT_NAME} PROPERTIES PREFIX "")

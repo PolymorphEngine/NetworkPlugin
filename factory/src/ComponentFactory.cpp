@@ -6,6 +6,10 @@
 */
 
 #include "ComponentFactory.hpp"
+#include <TcpClientScriptImpl.hpp>
+#include <TcpServerScriptImpl.hpp>
+#include <UdpClientScriptImpl.hpp>
+#include <UdpServerScriptImpl.hpp>
 
 polymorph::engine::api::ComponentFactory::ComponentFactory() : AComponentFactory()
 {
@@ -14,5 +18,5 @@ polymorph::engine::api::ComponentFactory::ComponentFactory() : AComponentFactory
 void polymorph::engine::api::ComponentFactory::_registerBuildables(
         std::unordered_map<std::string, polymorph::engine::api::AComponentFactory::FactoryLambda> &buildables)
 {
-
+    buildables.emplace("TcpClientScript", make<polymorph::engine::network::TcpClientScriptImpl>());
 }

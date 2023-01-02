@@ -1,4 +1,4 @@
-<Plugin name="plugin-template">
+<Plugin name="network-plugin">
     <Templates>
     </Templates>
     <Prefabs>

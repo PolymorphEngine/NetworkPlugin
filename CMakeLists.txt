@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.20)
 set(CMAKE_CXX_STANDARD 20)
 set(EXECUTABLE_OUTPUT_PATH ../)
 
-project(plugin-template)
+project(network-plugin)
 set(NAMESPACE polymorph)
 
 if (${CMAKE_SOURCE_DIR} EQUAL ${PROJECT_NAME})
@@ -32,6 +32,8 @@ file(GLOB_RECURSE EXPORTS includeExport/*.hpp)
 
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
+include(CMake/FindPolymorphNetworkLibrary.cmake)
+
 add_library(${PROJECT_NAME} SHARED ${SCRIPTS_SRC} ${SCRIPTS_ICL} ${FACTORY_SRC} ${FACTORY_ICL} ${CORE_SRC} ${CORE_ICL} ${EXPORTS})
 SET_TARGET_PROPERTIES(${PROJECT_NAME} PROPERTIES PREFIX "")
 target_include_directories(${PROJECT_NAME} PRIVATE
@@ -41,9 +43,10 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 )
 target_include_directories(${PROJECT_NAME} PUBLIC
         includeExport
+        ${PolymorphNetwork-icls}
 )
 
-target_link_libraries(${PROJECT_NAME} PolymorphEngine)
+target_link_libraries(${PROJECT_NAME} PUBLIC PolymorphEngine PolymorphNetwork)
 set_target_properties(${PROJECT_NAME} PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 if(WIN32)

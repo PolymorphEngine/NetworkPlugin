@@ -18,5 +18,8 @@ polymorph::engine::api::ComponentFactory::ComponentFactory() : AComponentFactory
 void polymorph::engine::api::ComponentFactory::_registerBuildables(
         std::unordered_map<std::string, polymorph::engine::api::AComponentFactory::FactoryLambda> &buildables)
 {
-    buildables.emplace("TcpClientScript", make<polymorph::engine::network::TcpClientScriptImpl>());
+    buildables.emplace("TcpClient", make<polymorph::engine::network::TcpClientScriptImpl>());
+    buildables.emplace("TcpServer", make<polymorph::engine::network::TcpServerScriptImpl>());
+    buildables.emplace("UdpClient", make<polymorph::engine::network::UdpClientScriptImpl>());
+    buildables.emplace("UdpServer", make<polymorph::engine::network::UdpServerScriptImpl>());
 }

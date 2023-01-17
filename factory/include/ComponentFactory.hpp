@@ -12,15 +12,15 @@
 
 namespace polymorph::engine::api
 {
-    class ComponentFactory : public AComponentFactory
+    class NetFactory : public AComponentFactory
     {
 
 ////////////////////// CONSTRUCTORS/DESTRUCTORS /////////////////////////
 
     public:
-        ComponentFactory();
+        NetFactory();
 
-        ~ComponentFactory() override = default;
+        ~NetFactory() override = default;
 
     private:
         void

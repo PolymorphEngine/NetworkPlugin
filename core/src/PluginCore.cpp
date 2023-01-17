@@ -1,6 +1,6 @@
 #include "PluginCore.hpp"
-#include "ComponentFactory.hpp"
-#include "SerializableObjectFactory.hpp"
+#include "../../factory/include/ComponentFactory.hpp"
+#include "../../factory/include/SerializableObjectFactory.hpp"
 #include "polymorph/engine/api/plugin/Symbols.hpp"
 
 namespace polymorph::engine::api
@@ -37,7 +37,7 @@ namespace polymorph::engine::api
 
     std::unique_ptr<AComponentFactory> PluginCore::createComponentFactory()
     {
-        return std::unique_ptr<AComponentFactory>(new ComponentFactory());
+        return std::unique_ptr<AComponentFactory>(new NetFactory());
     }
 
     std::unique_ptr<ASerializableObjectFactory> PluginCore::createSerializableObjectFactory()
